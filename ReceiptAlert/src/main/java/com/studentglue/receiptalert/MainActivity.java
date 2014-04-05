@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private Uri fileUri;
 
-    private static String imageName, timeStamp;
+    private static String imageName, timeStamp, absolutePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
         timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         imageName = "image_" + timeStamp + ".jpg";
         File image = new File(imagesFolder, imageName);
+        absolutePath = image.getAbsolutePath();
         Uri uriSavedImage = Uri.fromFile(image);
 
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
@@ -61,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 galleryAddPic(imageName);
-                //Toast.makeText(this, imageName, Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, absolutePath, Toast.LENGTH_LONG).show();
             }
             else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture

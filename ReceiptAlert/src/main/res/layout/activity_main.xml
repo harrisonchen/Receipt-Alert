@@ -6,14 +6,36 @@
     tools:context=".MainActivity"
     tools:ignore="MergeRootFrame" >
 
+    <View android:id="@+id/fakeView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/open_camera_btn"
-        android:id="@+id/open_camera_btn"
+        android:text="@string/new_receipt_btn"
+        android:id="@+id/new_receipt_btn"
         android:onClick="onNewReceiptClick"
-        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/setup_btn"
+        android:id="@+id/setup_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/fakeView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/report_btn"
+        android:id="@+id/report_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/fakeView" />
 
 </RelativeLayout>

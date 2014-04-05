@@ -4,6 +4,13 @@
     <string name="app_name">Receipt Alert</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="open_camera_btn">New Receipt</string>
+    <string name="new_receipt_btn">New Receipt</string>
+    <string name="setup_btn">Setup</string>
+    <string name="report_btn">Report</string>
+    <string name="title_activity_new_bank">NewBankActivity</string>
+
+    <!-- New Bank Activity -->
+    <string name="bank_name_textview">Bank Name</string>
+    <string name="cycle_date_textview">Cycle Date</string>
 
 </resources>
