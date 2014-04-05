@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.studentglue.receiptalert.newBankActivity"
+            android:name=".NewBankActivity"
             android:label="@string/title_activity_new_bank" >
         </activity>
     </application>
