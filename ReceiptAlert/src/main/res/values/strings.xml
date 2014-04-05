@@ -4,5 +4,6 @@
     <string name="app_name">Receipt Alert</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="open_camera_btn">New Receipt</string>
 
 </resources>
