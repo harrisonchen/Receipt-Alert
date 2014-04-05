@@ -28,8 +28,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewBankActivity"
+            android:name="com.studentglue.receiptalert.NewBankActivity"
             android:label="@string/title_activity_new_bank" >
+        </activity>
+        <activity
+            android:name="com.studentglue.receiptalert.BankActivity"
+            android:label="@string/title_activity_bank" >
         </activity>
     </application>
 

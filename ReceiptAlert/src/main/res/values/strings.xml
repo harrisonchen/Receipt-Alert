@@ -9,8 +9,13 @@
     <string name="report_btn">Report</string>
     <string name="title_activity_new_bank">NewBankActivity</string>
 
+    <!-- Bank Activity -->
+    <string name="my_banks_textview">My Banks</string>
+    <string name="add_new_bank_btn">Add new bank</string>
+
     <!-- New Bank Activity -->
     <string name="bank_name_textview">Bank Name</string>
     <string name="cycle_date_textview">Cycle Date</string>
+    <string name="title_activity_bank">BankActivity</string>
 
 </resources>
