@@ -2,9 +2,11 @@ package com.studentglue.receiptalert;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DBTools extends SQLiteOpenHelper {
@@ -21,7 +23,7 @@ public class DBTools extends SQLiteOpenHelper {
 
         String createReceiptQuery = "CREATE TABLE receipt(receipt_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "date TEXT NOT NULL, pushed_back INTEGER DEFAULT 0, image BLOB, " +
-                "FOREIGN KEY(bank_id) REFERENCES bank(bank_id)";
+                "bank_id INTEGER DEFAULT -1, FOREIGN KEY (bank_id) REFERENCES bank(bank_id))";
 
         database.execSQL(createBankQuery);
         database.execSQL(createReceiptQuery);
@@ -43,12 +45,39 @@ public class DBTools extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        values.put("name", queryValues.get("receipt_date"));
+        values.put("name", queryValues.get("bank_name"));
         values.put("cycle_date", queryValues.get("cycle_date"));
 
         database.insert("bank", null, values);
 
         database.close();
+    }
+
+    public ArrayList<HashMap<String, String>> getAllBanks() {
+
+        ArrayList<HashMap<String, String>> bankArrayList = new ArrayList<HashMap<String, String>>();
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        String selectQuery = "SELECT * FROM bank ORDER BY bank_id DESC";
+
+        Cursor cursor = database.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+
+            do {
+                HashMap<String, String> bankMap = new HashMap<String, String>();
+
+                bankMap.put("bank_id", cursor.getString(0));
+                bankMap.put("bank_name", cursor.getString(1));
+                bankMap.put("cycle_date", cursor.getString(2));
+
+                bankArrayList.add(bankMap);
+            } while(cursor.moveToNext());
+        }
+
+        database.close();
+
+        return bankArrayList;
     }
 
     public void addReceipt(HashMap<String, String> queryValues) {

@@ -10,13 +10,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
+
+import java.util.HashMap;
 
 public class NewBankActivity extends ActionBarActivity {
+
+    DBTools dbtools = new DBTools(this);
+
+    EditText bank_name_edittext, cycle_date_edittext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_bank);
+
+        bank_name_edittext = (EditText) findViewById(R.id.bank_name_edittext);
+        cycle_date_edittext = (EditText) findViewById(R.id.cycle_date_edittext);
 
         /*if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -25,6 +35,28 @@ public class NewBankActivity extends ActionBarActivity {
         }*/
     }
 
+    public void addBank(View view) {
+
+        String bank_name, cycle_date;
+
+        bank_name = bank_name_edittext.getText().toString();
+        cycle_date = cycle_date_edittext.getText().toString();
+
+        if(!blank_or_empty(bank_name) && !blank_or_empty(cycle_date)) {
+            HashMap<String, String> queryValues = new HashMap<String, String>();
+
+            queryValues.put("bank_name", bank_name.toUpperCase());
+            queryValues.put("cycle_date", cycle_date);
+
+            dbtools.addBank(queryValues);
+
+            finish();
+        }
+    }
+
+    public boolean blank_or_empty(String s) {
+        return (s == null || s.isEmpty());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

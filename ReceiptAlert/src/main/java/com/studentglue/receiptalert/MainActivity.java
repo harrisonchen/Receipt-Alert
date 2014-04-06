@@ -56,6 +56,12 @@ public class MainActivity extends ActionBarActivity {
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
 
+    public void SetupBanks(View view) {
+        Intent setupBanksIntent = new Intent(getApplication(), BankActivity.class);
+
+        startActivity(setupBanksIntent);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,5 +1,6 @@
 package com.studentglue.receiptalert;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -10,13 +11,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class BankActivity extends ActionBarActivity {
+
+    ListView bankListView;
+    BankEntryAdapter bankEntryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank);
+
+        bankListView = (ListView) findViewById(R.id.bank_listview);
+        bankEntryAdapter = new BankEntryAdapter(this);
+
+        bankListView.setAdapter(bankEntryAdapter);
 
         /*if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -25,6 +37,11 @@ public class BankActivity extends ActionBarActivity {
         }*/
     }
 
+    public void newBank(View view) {
+        Intent newBankIntent = new Intent(getApplication(), NewBankActivity.class);
+
+        startActivity(newBankIntent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

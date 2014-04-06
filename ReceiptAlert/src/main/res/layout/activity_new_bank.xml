@@ -40,4 +40,13 @@
         android:layout_below="@+id/cycle_date_textview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addBank"
+        android:text="@string/complete_btn"
+        android:id="@+id/complete_btn"
+        android:layout_below="@+id/cycle_date_edittext"
+        android:layout_alignParentLeft="true" />
 </RelativeLayout>
