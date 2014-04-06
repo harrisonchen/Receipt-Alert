@@ -17,6 +17,8 @@ import java.util.List;
 
 public class BankActivity extends ActionBarActivity {
 
+    private static final int NEW_BANK_REQUEST = 1;
+
     ListView bankListView;
     BankEntryAdapter bankEntryAdapter;
 
@@ -40,7 +42,24 @@ public class BankActivity extends ActionBarActivity {
     public void newBank(View view) {
         Intent newBankIntent = new Intent(getApplication(), NewBankActivity.class);
 
-        startActivity(newBankIntent);
+        startActivityForResult(newBankIntent, NEW_BANK_REQUEST);
+    }
+
+    public void updateAdapter() {
+        bankEntryAdapter = new BankEntryAdapter(this);
+        bankListView.setAdapter(bankEntryAdapter);
+        bankEntryAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == NEW_BANK_REQUEST && resultCode == RESULT_OK)
+        {
+            updateAdapter();
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

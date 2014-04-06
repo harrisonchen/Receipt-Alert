@@ -1,5 +1,6 @@
 package com.studentglue.receiptalert;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -49,6 +50,8 @@ public class NewBankActivity extends ActionBarActivity {
             queryValues.put("cycle_date", cycle_date);
 
             dbtools.addBank(queryValues);
+
+            setResult(Activity.RESULT_OK);
 
             finish();
         }

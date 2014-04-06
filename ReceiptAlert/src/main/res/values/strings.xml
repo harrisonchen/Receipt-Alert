@@ -10,7 +10,7 @@
     <string name="title_activity_new_bank">NewBankActivity</string>
 
     <!-- Bank Activity -->
-    <string name="my_banks_textview">My Banks</string>
+    <string name="my_banks_textview">Banks</string>
     <string name="add_new_bank_btn">Add new bank</string>
 
     <!-- New Bank Activity -->

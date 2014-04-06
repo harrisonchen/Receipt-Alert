@@ -9,6 +9,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:padding="6sp"
         android:text="Bank"
+        android:textColor="#505050"
         android:id="@+id/bank_name_textview"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true" />
