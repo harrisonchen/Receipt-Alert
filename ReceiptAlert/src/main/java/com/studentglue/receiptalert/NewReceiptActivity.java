@@ -27,7 +27,7 @@ public class NewReceiptActivity extends ActionBarActivity {
     Intent new_receipt_intent;
     Bundle extras;
 
-    private static String absolutePath, receipt_label, receipt_date, receipt_bank, imageName;
+    private static String absolutePath, receipt_label, receipt_date, receipt_bank;
 
     ImageView receipt_imageview;
     EditText receipt_label_edittext, receipt_date_edittext, receipt_bank_edittext;
@@ -50,7 +50,6 @@ public class NewReceiptActivity extends ActionBarActivity {
         extras = new_receipt_intent.getExtras();
 
         absolutePath = extras.getString("IMAGE_PATH");
-        imageName = extras.getString("IMAGE_NAME");
 
         File receipt_file = new File(absolutePath);
         Uri receipt_uri = Uri.fromFile(receipt_file);
@@ -84,21 +83,12 @@ public class NewReceiptActivity extends ActionBarActivity {
 
         dbtools.addReceipt(receiptMap);
 
-        galleryAddPic(imageName);
-
         setResult(Activity.RESULT_OK);
 
         finish();
     }
 
-    private void galleryAddPic(String imageName) {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "ReceiptAlert");
-        File image = new File(imagesFolder, imageName);
-        Uri contentUri = Uri.fromFile(image);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
-    }
+
 
 
     @Override

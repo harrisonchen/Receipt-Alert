@@ -69,12 +69,13 @@ public class MainActivity extends ActionBarActivity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
 
+                galleryAddPic(imageName);
+
                 //Toast.makeText(this, absolutePath, Toast.LENGTH_LONG).show();
 
                 Intent new_receipt_intent = new Intent(getApplication(), NewReceiptActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("IMAGE_PATH", absolutePath);
-                extras.putString("IMAGE_NAME", imageName);
                 new_receipt_intent.putExtras(extras);
                 //Retrieve imagepath (absolute path) and put into BUNDLE EXTRA
 
@@ -100,7 +101,14 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
+    private void galleryAddPic(String imageName) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "ReceiptAlert");
+        File image = new File(imagesFolder, imageName);
+        Uri contentUri = Uri.fromFile(image);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
