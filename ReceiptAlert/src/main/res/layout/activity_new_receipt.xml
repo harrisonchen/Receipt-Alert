@@ -10,34 +10,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/receipt_label"
         android:id="@+id/receipt_label_textview"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/receipt_label_edittext"
         android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/receipt_label_edittext"
-        android:layout_below="@+id/receipt_label_textview"
+        android:layout_above="@+id/receipt_date_textview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/receipt_date"
         android:id="@+id/receipt_date_textview"
-        android:layout_below="@+id/receipt_label_edittext"
+        android:layout_above="@+id/receipt_date_edittext"
         android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/receipt_date_edittext"
-        android:layout_below="@+id/receipt_date_textview"
+        android:layout_above="@+id/receipt_bank_textview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
 
@@ -53,18 +51,26 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/receipt_bank"
         android:id="@+id/receipt_bank_textview"
-        android:layout_below="@+id/receipt_date_edittext"
+        android:layout_above="@+id/receipt_bank_edittext"
         android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/receipt_bank_edittext"
-        android:layout_below="@+id/receipt_bank_textview"
+        android:layout_above="@+id/save_receipt_btn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_receipt_btn"
+        android:id="@+id/save_receipt_btn"
+        android:onClick="saveReceipt"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

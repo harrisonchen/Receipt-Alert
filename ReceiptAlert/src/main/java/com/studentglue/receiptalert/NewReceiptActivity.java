@@ -1,5 +1,6 @@
 package com.studentglue.receiptalert;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,30 +16,41 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.util.HashMap;
 
 public class NewReceiptActivity extends ActionBarActivity {
 
     Intent new_receipt_intent;
     Bundle extras;
 
-    private static String absolutePath;
+    private static String absolutePath, receipt_label, receipt_date, receipt_bank, imageName;
 
     ImageView receipt_imageview;
+    EditText receipt_label_edittext, receipt_date_edittext, receipt_bank_edittext;
+
+    DBTools dbtools;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_receipt);
 
+        dbtools = new DBTools(this);
+
         receipt_imageview = (ImageView) findViewById(R.id.receipt_imageview);
+        receipt_label_edittext = (EditText) findViewById(R.id.receipt_label_edittext);
+        receipt_date_edittext = (EditText) findViewById(R.id.receipt_date_edittext);
+        receipt_bank_edittext = (EditText) findViewById(R.id.receipt_bank_edittext);
 
         new_receipt_intent = getIntent();
         extras = new_receipt_intent.getExtras();
 
         absolutePath = extras.getString("IMAGE_PATH");
+        imageName = extras.getString("IMAGE_NAME");
 
         File receipt_file = new File(absolutePath);
         Uri receipt_uri = Uri.fromFile(receipt_file);
@@ -55,6 +67,37 @@ public class NewReceiptActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }*/
+    }
+
+    public void saveReceipt(View view) {
+
+        receipt_label = receipt_label_edittext.getText().toString();
+        receipt_date = receipt_date_edittext.getText().toString();
+        receipt_bank = receipt_bank_edittext.getText().toString();
+
+        HashMap<String, String> receiptMap = new HashMap<String, String>();
+
+        receiptMap.put("receipt_label", receipt_label);
+        receiptMap.put("receipt_date", receipt_date);
+        receiptMap.put("receipt_bank", "1");
+        receiptMap.put("image", absolutePath);
+
+        dbtools.addReceipt(receiptMap);
+
+        galleryAddPic(imageName);
+
+        setResult(Activity.RESULT_OK);
+
+        finish();
+    }
+
+    private void galleryAddPic(String imageName) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "ReceiptAlert");
+        File image = new File(imagesFolder, imageName);
+        Uri contentUri = Uri.fromFile(image);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
     }
 
 
