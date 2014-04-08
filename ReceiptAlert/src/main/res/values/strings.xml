@@ -18,5 +18,11 @@
     <string name="cycle_date_textview">Cycle Date</string>
     <string name="title_activity_bank">BankActivity</string>
     <string name="complete_btn">Complete</string>
+    <string name="title_activity_new_receipt">NewReceiptActivity</string>
+
+    <!-- New Receipt Activity -->
+    <string name="receipt_label">Receipt Label</string>
+    <string name="receipt_date">Transaction Date</string>
+    <string name="receipt_bank">Bank</string>
 
 </resources>

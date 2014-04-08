@@ -22,6 +22,7 @@ public class DBTools extends SQLiteOpenHelper {
                 "name TEXT NOT NULL, cycle_date TEXT NOT NULL)";
 
         String createReceiptQuery = "CREATE TABLE receipt(receipt_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "label TEXT NOT NULL, " +
                 "date TEXT NOT NULL, pushed_back INTEGER DEFAULT 0, image BLOB, " +
                 "bank_id INTEGER DEFAULT -1, FOREIGN KEY (bank_id) REFERENCES bank(bank_id))";
 
@@ -86,6 +87,7 @@ public class DBTools extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
+        values.put("label", queryValues.get("receipt_label"));
         values.put("date", queryValues.get("receipt_date"));
         values.put("bank_id", queryValues.get("bank_id"));
         values.put("image", queryValues.get("image_value"));

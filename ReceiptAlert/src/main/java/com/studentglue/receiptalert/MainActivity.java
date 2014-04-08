@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+    private static final int NEW_RECEIPT_REQUEST = 2;
     private Uri fileUri;
 
     private static String imageName, timeStamp, absolutePath;
@@ -69,12 +70,31 @@ public class MainActivity extends ActionBarActivity {
             if (resultCode == RESULT_OK) {
                 galleryAddPic(imageName);
                 //Toast.makeText(this, absolutePath, Toast.LENGTH_LONG).show();
+
+                Intent new_receipt_intent = new Intent(getApplication(), NewReceiptActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("IMAGE_PATH", absolutePath);
+                new_receipt_intent.putExtras(extras);
+                //Retrieve imagepath (absolute path) and put into BUNDLE EXTRA
+
+                startActivityForResult(new_receipt_intent, NEW_RECEIPT_REQUEST);
             }
             else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
             }
             else {
                 // Image capture failed, advise user
+            }
+        }
+        if (requestCode == NEW_RECEIPT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+
+            }
+            else if (resultCode == RESULT_CANCELED) {
+
+            }
+            else {
+
             }
         }
     }
