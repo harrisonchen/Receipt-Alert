@@ -117,7 +117,7 @@ public class NewReceiptActivity extends ActionBarActivity {
         receiptMap.put("receipt_label", receipt_label);
         receiptMap.put("receipt_date", receipt_date);
         receiptMap.put("receipt_bank", "1");
-        receiptMap.put("image", absolutePath);
+        receiptMap.put("image_value", absolutePath);
 
         dbtools.addReceipt(receiptMap);
 

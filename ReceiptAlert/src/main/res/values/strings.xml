@@ -25,5 +25,6 @@
     <string name="receipt_date">Transaction Date</string>
     <string name="receipt_bank">Bank</string>
     <string name="save_receipt_btn">Save</string>
+    <string name="title_activity_report">ReportActivity</string>
 
 </resources>

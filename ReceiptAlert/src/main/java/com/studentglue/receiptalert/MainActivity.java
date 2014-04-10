@@ -25,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private static final int NEW_RECEIPT_REQUEST = 2;
+    private static final int REPORT_REQUEST = 3;
     private Uri fileUri;
 
     private static String imageName, timeStamp, absolutePath;
@@ -57,10 +58,16 @@ public class MainActivity extends ActionBarActivity {
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
 
-    public void SetupBanks(View view) {
+    public void setupBanks(View view) {
         Intent setupBanksIntent = new Intent(getApplication(), BankActivity.class);
 
         startActivity(setupBanksIntent);
+    }
+
+    public void viewReport(View view) {
+        Intent viewReportIntent = new Intent(getApplication(), ReportActivity.class);
+
+        startActivity(viewReportIntent);
     }
 
 

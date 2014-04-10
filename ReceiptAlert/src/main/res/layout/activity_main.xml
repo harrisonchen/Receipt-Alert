@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="@string/setup_btn"
         android:id="@+id/setup_btn"
-        android:onClick="SetupBanks"
+        android:onClick="setupBanks"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/fakeView" />
@@ -35,6 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/report_btn"
         android:id="@+id/report_btn"
+        android:onClick="viewReport"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/fakeView" />
