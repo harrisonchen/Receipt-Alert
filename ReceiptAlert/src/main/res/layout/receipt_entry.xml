@@ -9,7 +9,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Receipt"
         android:textColor="#505050"
-        android:padding="6sp"
+        android:paddingLeft="6sp"
+        android:paddingTop="6sp"
         android:id="@+id/receipt_label_textview"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true" />
@@ -19,4 +20,15 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:id="@+id/receipt_id" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Transaction Date"
+        android:textColor="#505050"
+        android:paddingLeft="6sp"
+        android:id="@+id/receipt_date_textview"
+        android:layout_below="@+id/receipt_label_textview"
+        android:layout_alignParentLeft="true" />
 </RelativeLayout>

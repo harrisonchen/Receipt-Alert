@@ -26,5 +26,6 @@
     <string name="receipt_bank">Bank</string>
     <string name="save_receipt_btn">Save</string>
     <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_bank_receipt">BankReceiptActivity</string>
 
 </resources>

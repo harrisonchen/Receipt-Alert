@@ -123,4 +123,31 @@ public class DBTools extends SQLiteOpenHelper {
 
         return receiptArrayList;
     }
+
+    public ArrayList<HashMap<String, String>> getAllReceiptsFromBank(String bank) {
+
+        ArrayList<HashMap<String, String>> receiptArrayList = new ArrayList<HashMap<String, String>>();
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        String selectQuery = "SELECT * FROM receipt ORDER BY receipt_id DESC";
+
+        Cursor cursor = database.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+
+            do {
+                HashMap<String, String> receiptMap = new HashMap<String, String>();
+
+                receiptMap.put("receipt_id", cursor.getString(0));
+                receiptMap.put("receipt_label", cursor.getString(1));
+                receiptMap.put("image", cursor.getString(4));
+
+                receiptArrayList.add(receiptMap);
+            } while(cursor.moveToNext());
+        }
+
+        database.close();
+
+        return receiptArrayList;
+    }
 }

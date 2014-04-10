@@ -16,10 +16,10 @@ public class ReceiptEntryAdapter extends BaseAdapter {
     Context context;
     DBTools dbtools;
 
-    ReceiptEntryAdapter(Context c) {
+    ReceiptEntryAdapter(Context c, String bank) {
         context = c;
         dbtools = new DBTools(context);
-        receiptArrayList = dbtools.getAllReceipts();
+        receiptArrayList = dbtools.getAllReceiptsFromBank(bank);
     }
 
     @Override
@@ -45,11 +45,13 @@ public class ReceiptEntryAdapter extends BaseAdapter {
 
         TextView receipt_id = (TextView) row.findViewById(R.id.receipt_id);
         TextView receipt_label_textview = (TextView) row.findViewById(R.id.receipt_label_textview);
+        TextView receipt_date_textview = (TextView) row.findViewById(R.id.receipt_date_textview);
 
         HashMap<String, String> receiptMap = receiptArrayList.get(i);
 
         receipt_id.setText(receiptMap.get("receipt_id"));
         receipt_label_textview.setText(receiptMap.get("receipt_label"));
+        receipt_date_textview.setText(receiptMap.get("receipt_date"));
 
         return row;
     }

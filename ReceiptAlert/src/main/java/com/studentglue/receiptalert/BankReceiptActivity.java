@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ListView;
 
-public class ReportActivity extends ActionBarActivity {
-
-    private static final int REPORT_REQUEST = 3;
+public class BankReceiptActivity extends ActionBarActivity {
 
     ListView receiptListView;
     ReceiptEntryAdapter receiptEntryAdapter;
@@ -22,7 +20,7 @@ public class ReportActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_bank_receipt);
 
         receiptListView = (ListView) findViewById(R.id.receipt_listview);
         receiptEntryAdapter = new ReceiptEntryAdapter(this, "BANK NAME");
@@ -42,12 +40,11 @@ public class ReportActivity extends ActionBarActivity {
         receiptEntryAdapter.notifyDataSetChanged();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.report, menu);
+        getMenuInflater().inflate(R.menu.bank_receipt, menu);
         return true;
     }
 
@@ -74,7 +71,7 @@ public class ReportActivity extends ActionBarActivity {
         /*@Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_report, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_bank_receipt, container, false);
             return rootView;
         }*/
     }

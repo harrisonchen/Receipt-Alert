@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -22,6 +24,10 @@ public class BankActivity extends ActionBarActivity {
     ListView bankListView;
     BankEntryAdapter bankEntryAdapter;
 
+    TextView bank_id_textview;
+    String bank_id;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,22 @@ public class BankActivity extends ActionBarActivity {
         bankEntryAdapter = new BankEntryAdapter(this);
 
         bankListView.setAdapter(bankEntryAdapter);
+
+        bankListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                bank_id_textview = (TextView) view.findViewById(R.id.bank_id);
+
+                bank_id = bank_id_textview.getText().toString();
+
+                Intent bankReceiptIntent = new Intent(getApplication(), BankReceiptActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("BANK_ID", bank_id);
+                bankReceiptIntent.putExtras(extras);
+                startActivity(bankReceiptIntent);
+            }
+        });
 
         /*if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

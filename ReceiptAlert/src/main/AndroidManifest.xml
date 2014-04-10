@@ -46,6 +46,10 @@
             android:name="com.studentglue.receiptalert.ReportActivity"
             android:label="@string/title_activity_report" >
         </activity>
+        <activity
+            android:name="com.studentglue.receiptalert.BankReceiptActivity"
+            android:label="@string/title_activity_bank_receipt" >
+        </activity>
     </application>
 
 </manifest>
