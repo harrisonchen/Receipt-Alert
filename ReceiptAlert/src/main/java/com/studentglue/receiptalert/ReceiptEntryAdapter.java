@@ -46,12 +46,14 @@ public class ReceiptEntryAdapter extends BaseAdapter {
         TextView receipt_id = (TextView) row.findViewById(R.id.receipt_id);
         TextView receipt_label_textview = (TextView) row.findViewById(R.id.receipt_label_textview);
         TextView receipt_date_textview = (TextView) row.findViewById(R.id.receipt_date_textview);
+        TextView receipt_payment_textview = (TextView) row.findViewById(R.id.receipt_payment_textview);
 
         HashMap<String, String> receiptMap = receiptArrayList.get(i);
 
         receipt_id.setText(receiptMap.get("receipt_id"));
         receipt_label_textview.setText(receiptMap.get("receipt_label"));
         receipt_date_textview.setText(receiptMap.get("receipt_date"));
+        receipt_payment_textview.setText(receiptMap.get("receipt_payment"));
 
         return row;
     }

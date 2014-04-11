@@ -25,7 +25,7 @@ public class ReportActivity extends ActionBarActivity {
         setContentView(R.layout.activity_report);
 
         receiptListView = (ListView) findViewById(R.id.receipt_listview);
-        receiptEntryAdapter = new ReceiptEntryAdapter(this, "BANK NAME");
+        receiptEntryAdapter = new ReceiptEntryAdapter(this, "1");
 
         receiptListView.setAdapter(receiptEntryAdapter);
 

@@ -35,6 +35,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/receipt_date_edittext"
+        android:layout_above="@+id/receipt_payment_textview"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/receipt_payment"
+        android:id="@+id/receipt_payment_textview"
+        android:layout_above="@+id/receipt_payment_edittext"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/receipt_payment_edittext"
         android:layout_above="@+id/receipt_bank_textview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
@@ -43,10 +59,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/receipt_imageview"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_above="@+id/receipt_label_textview" />
+        android:layout_above="@+id/receipt_label_textview"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:layout_width="wrap_content"

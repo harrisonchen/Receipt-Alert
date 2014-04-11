@@ -1,5 +1,6 @@
 package com.studentglue.receiptalert;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -17,13 +18,21 @@ public class BankReceiptActivity extends ActionBarActivity {
     ListView receiptListView;
     ReceiptEntryAdapter receiptEntryAdapter;
 
+    Intent intent;
+    Bundle extras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_receipt);
 
+        intent = getIntent();
+        extras = intent.getExtras();
+
+        String bank_id = extras.getString("BANK_ID");
+
         receiptListView = (ListView) findViewById(R.id.receipt_listview);
-        receiptEntryAdapter = new ReceiptEntryAdapter(this, "BANK NAME");
+        receiptEntryAdapter = new ReceiptEntryAdapter(this, bank_id);
 
         receiptListView.setAdapter(receiptEntryAdapter);
 

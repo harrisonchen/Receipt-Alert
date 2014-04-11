@@ -31,4 +31,17 @@
         android:id="@+id/receipt_date_textview"
         android:layout_below="@+id/receipt_label_textview"
         android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="PAYMENT"
+        android:id="@+id/receipt_payment_textview"
+        android:textColor="#505050"
+        android:paddingRight="6sp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/receipt_date_textview" />
 </RelativeLayout>
