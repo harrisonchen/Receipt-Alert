@@ -29,7 +29,7 @@ public class NewReceiptActivity extends ActionBarActivity {
     Intent new_receipt_intent;
     Bundle extras;
 
-    private static String absolutePath, receipt_label, receipt_date, receipt_bank, receipt_payment;
+    private static String absolutePath, receipt_date, receipt_bank;
 
     ImageView receipt_imageview;
     EditText receipt_label_edittext, receipt_date_edittext, receipt_bank_edittext, receipt_payment_edittext;
@@ -44,10 +44,8 @@ public class NewReceiptActivity extends ActionBarActivity {
         dbtools = new DBTools(this);
 
         receipt_imageview = (ImageView) findViewById(R.id.receipt_imageview);
-        receipt_label_edittext = (EditText) findViewById(R.id.receipt_label_edittext);
         receipt_date_edittext = (EditText) findViewById(R.id.receipt_date_edittext);
         receipt_bank_edittext = (EditText) findViewById(R.id.receipt_bank_edittext);
-        receipt_payment_edittext = (EditText) findViewById(R.id.receipt_payment_edittext);
 
         new_receipt_intent = getIntent();
         extras = new_receipt_intent.getExtras();
@@ -109,17 +107,13 @@ public class NewReceiptActivity extends ActionBarActivity {
 
     public void saveReceipt(View view) {
 
-        receipt_label = receipt_label_edittext.getText().toString();
         receipt_date = receipt_date_edittext.getText().toString();
         receipt_bank = receipt_bank_edittext.getText().toString();
-        receipt_payment = receipt_payment_edittext.getText().toString();
 
         HashMap<String, String> receiptMap = new HashMap<String, String>();
 
-        receiptMap.put("receipt_label", receipt_label);
         receiptMap.put("receipt_date", receipt_date);
         receiptMap.put("receipt_bank", receipt_bank.toUpperCase());
-        receiptMap.put("receipt_payment", receipt_payment);
         receiptMap.put("image_value", absolutePath);
 
         dbtools.addReceipt(receiptMap);

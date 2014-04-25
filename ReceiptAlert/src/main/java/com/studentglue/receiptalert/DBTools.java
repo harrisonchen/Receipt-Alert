@@ -22,8 +22,8 @@ public class DBTools extends SQLiteOpenHelper {
                 "name TEXT NOT NULL, cycle_date TEXT NOT NULL)";
 
         String createReceiptQuery = "CREATE TABLE receipt(receipt_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "label TEXT NOT NULL, date TEXT NOT NULL, pushed_back INTEGER DEFAULT 0, " +
-                "payment REAL NOT NULL, image BLOB, " +
+                "date TEXT NOT NULL, pushed_back INTEGER DEFAULT 0, " +
+                "image BLOB, " +
                 "bank_id INTEGER DEFAULT -1, FOREIGN KEY (bank_id) REFERENCES bank(bank_id))";
 
         database.execSQL(createBankQuery);
@@ -87,10 +87,8 @@ public class DBTools extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        values.put("label", queryValues.get("receipt_label"));
         values.put("date", queryValues.get("receipt_date"));
         values.put("bank_id", queryValues.get("receipt_bank"));
-        values.put("payment", queryValues.get("receipt_payment"));
         values.put("image", queryValues.get("image_value"));
 
         database.insert("receipt", null, values);
@@ -113,10 +111,8 @@ public class DBTools extends SQLiteOpenHelper {
                 HashMap<String, String> receiptMap = new HashMap<String, String>();
 
                 receiptMap.put("receipt_id", cursor.getString(0));
-                receiptMap.put("receipt_label", cursor.getString(1));
-                receiptMap.put("receipt_date", cursor.getString(2));
-                receiptMap.put("receipt_payment", cursor.getString(4));
-                receiptMap.put("image", cursor.getString(5));
+                receiptMap.put("receipt_date", cursor.getString(1));
+                receiptMap.put("image", cursor.getString(3));
 
                 receiptArrayList.add(receiptMap);
             } while(cursor.moveToNext());
@@ -142,10 +138,8 @@ public class DBTools extends SQLiteOpenHelper {
                 HashMap<String, String> receiptMap = new HashMap<String, String>();
 
                 receiptMap.put("receipt_id", cursor.getString(0));
-                receiptMap.put("receipt_label", cursor.getString(1));
-                receiptMap.put("receipt_date", cursor.getString(2));
-                receiptMap.put("receipt_payment", cursor.getString(4));
-                receiptMap.put("image", cursor.getString(5));
+                receiptMap.put("receipt_date", cursor.getString(1));
+                receiptMap.put("image", cursor.getString(3));
 
                 receiptArrayList.add(receiptMap);
             } while(cursor.moveToNext());
